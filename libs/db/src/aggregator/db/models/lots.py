@@ -1,5 +1,5 @@
-from models.base import Base
-from models.asset_type import AssetType
+from .base import Base
+from .asset_type import AssetType
 
 from sqlalchemy import Column, Integer, String, Date, Float, Enum
 from sqlalchemy.orm import relationship
