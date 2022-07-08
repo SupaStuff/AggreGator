@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "AggreGator"
+version = "0.0.0"
+description = "A financial health dashboard"
+authors = ["SupaStuff <Stuff_Git_NaoResposta@outlook.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.10.5,<3.11"
+db = { path = "./libs/db/", develop = true }
+dbinit = { path = "./apps/dbinit/", develop = true }
+market = { path = "./apps/market/", develop = true }
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.6.0"
+flake8 = "^4.0.1"
+pycodestyle = "^2.8.0"
+pydocstyle = "^6.1.1"
+pylint = "^2.14.3"
+pytest = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

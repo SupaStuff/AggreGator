@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "market"
+version = "0.0.0"
+description = "Identify islands and fetch+insert market data for each day each security is held"
+authors = ["SupaStuff <Stuff_Git_NaoResposta@outlook.com>"]
+license = "MIT"
+packages = [
+  { include = "aggregator", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10.5,<3.11"
+psycopg2-binary = "^2.9.2"
+requests = "^2.26.0"
+SQLAlchemy = "^1.4.28"
+SQLAlchemy-Utils = "^0.37.9"
+db = { path = "../../libs/db/", develop = true }
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

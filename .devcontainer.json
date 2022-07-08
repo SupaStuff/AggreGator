@@ -1,0 +1,26 @@
+// https://github.com/devcontainers/spec/blob/main/docs/specs/devcontainerjson-reference.md
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "image": "stuff/python:poetry",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.my_history,target=/home/python/.my_history,type=bind,consistency=cached",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/secret.gitconfig,target=/home/python/secret.gitconfig,type=bind,consistency=cached",
+    // transaction data directory. Can't do variable expansion, so for now this directory has to be adjacent to this project.
+    // Maybe in the future this will be a repo clone
+    "source=${localWorkspaceFolder}/../txn,target=/workspaces/txn/,type=bind,consistency=cached",
+    // Consider caching python deps and vscode_server & vscode_server_insiders. Used to be:
+    // - python:/home/${CONTAINER_USER}/.local
+    // - vscode_server:/home/${CONTAINER_USER}/.vscode-server/extensions
+    // - vscode_server_insiders:/home/${CONTAINER_USER}/.vscode-server-insiders/extensions
+  ],
+  // Tool specific configurations (honestly, it should be a separate file...):
+  // https://github.com/devcontainers/spec/blob/main/docs/specs/supporting-tools.md
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig",
+        "ms-python.python",
+      ],
+    }
+  },
+}
