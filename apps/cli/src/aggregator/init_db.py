@@ -39,9 +39,12 @@ def create_hypertables(engine, modules):
         txn.commit()
 
 
-if __name__ == "__main__":
+def init_db():
     engine = getDbEngine()
     create_db(engine)
     model_list = import_models()
     Base.metadata.create_all(engine)
     create_hypertables(engine, model_list)
+
+if __name__ == "__main__":
+  init_db()

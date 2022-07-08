@@ -9,7 +9,7 @@ from aggregator.db.engine.utils import getDbEngine
 from aggregator.db.models.market import Market
 from aggregator.db.models.trades import Trades
 
-if __name__ == "__main__":
+def populate_market_data():
     start = int(datetime.strptime("01/01/2020", '%m/%d/%Y').timestamp())
     end = int(datetime.strptime("12/29/2021", '%m/%d/%Y').timestamp())
     headers = {
@@ -31,3 +31,6 @@ if __name__ == "__main__":
                               close=close, adjusted_close=adjusted_close, volume=volume)
                 sess.add(data)
             sess.commit()
+
+if __name__ == "__main__":
+  populate_market_data()

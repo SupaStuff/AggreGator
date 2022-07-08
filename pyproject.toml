@@ -8,8 +8,10 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = ">=3.10.5,<3.11"
 db = { path = "./libs/db/", develop = true }
-dbinit = { path = "./apps/dbinit/", develop = true }
-market = { path = "./apps/market/", develop = true }
+cli = { path = "./apps/cli/", develop = true }
+
+[tool.poetry.scripts]
+aggregator = "aggregator.cli"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.6.0"
