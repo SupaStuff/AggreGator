@@ -45,6 +45,3 @@ def init_db():
     model_list = import_models()
     Base.metadata.create_all(engine)
     create_hypertables(engine, model_list)
-
-if __name__ == "__main__":
-  init_db()

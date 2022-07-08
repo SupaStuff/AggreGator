@@ -31,6 +31,3 @@ def populate_market_data():
                               close=close, adjusted_close=adjusted_close, volume=volume)
                 sess.add(data)
             sess.commit()
-
-if __name__ == "__main__":
-  populate_market_data()
