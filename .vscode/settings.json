@@ -1,4 +1,8 @@
 {
+  "files.exclude": {
+    "**/__pycache__/": true,
+    "**/__init__.py": true,
+  },
   "editor.formatOnSave": true,
   "editor.detectIndentation": false,
   "files.trimFinalNewlines": true,

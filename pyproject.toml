@@ -10,9 +10,6 @@ python = ">=3.10.5,<3.11"
 db = { path = "./libs/db/", develop = true }
 cli = { path = "./apps/cli/", develop = true }
 
-[tool.poetry.scripts]
-aggregator = "aggregator.cli"
-
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.6.0"
 flake8 = "^4.0.1"
