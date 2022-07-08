@@ -2,12 +2,10 @@ import csv
 import requests
 from datetime import datetime
 from operator import itemgetter
-from sqlalchemy import engine_from_config
 from sqlalchemy.orm import Session
 
 
-# TODO (#2): fix config
-from helpers.config import config
+from aggregator.db.engine.utils import getDbEngine
 from aggregator.db.models.market import Market
 from aggregator.db.models.trades import Trades
 
@@ -17,7 +15,7 @@ if __name__ == "__main__":
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
     }
-    engine = engine_from_config(config)
+    engine = getDbEngine()
     with Session(engine) as sess, requests.Session() as req:
         symbols = sess.query(Trades.symbol).distinct().all()
         for cymbal in symbols:
