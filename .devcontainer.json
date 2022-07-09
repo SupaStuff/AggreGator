@@ -1,7 +1,7 @@
 // https://github.com/devcontainers/spec/blob/main/docs/specs/devcontainerjson-reference.md
 {
   "name": "${localWorkspaceFolderBasename}",
-  "image": "stuff/python:poetry",
+  "image": "supastuff/python:poetry",
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.my_history,target=/home/python/.my_history,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/secret.gitconfig,target=/home/python/secret.gitconfig,type=bind,consistency=cached",
