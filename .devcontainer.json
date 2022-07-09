@@ -6,12 +6,6 @@
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.my_history,target=/home/python/.my_history,type=bind,consistency=cached",
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/secret.gitconfig,target=/home/python/secret.gitconfig,type=bind,consistency=cached",
     "source=aggregator_venv,target=${containerWorkspaceFolder}/.venv,type=volume",
-    // transaction data directory. Can't do variable expansion, so for now this directory has to be adjacent to this project.
-    // Maybe in the future this will be a repo clone
-    "source=${localWorkspaceFolder}/../txn,target=/workspaces/txn/,type=bind,consistency=cached",
-    // Consider caching vscode_server & vscode_server_insiders. Used to be:
-    // - vscode_server:/home/${CONTAINER_USER}/.vscode-server/extensions
-    // - vscode_server_insiders:/home/${CONTAINER_USER}/.vscode-server-insiders/extensions
   ],
   "containerUser": "python",
   "postCreateCommand": "chown python .venv",
@@ -20,9 +14,18 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "bierner.markdown-mermaid",
+        "bungcip.better-toml",
+        "davidanson.vscode-markdownlint",
         "editorconfig.editorconfig",
         "ms-python.python",
+        "yzhang.markdown-all-in-one",
       ],
+      // This should be supported, but it's not. Installing them isn't too slow, I guess
+      // "mounts": [
+      //   "source=vscode_server4python,target=/home/python/.vscode-server/extensions,type=volume",
+      //   "source=vscode_server_insiders4python,target=/home/python/.vscode-server-insiders/extensions,type=volume",
+      // ]
     }
   },
 }
