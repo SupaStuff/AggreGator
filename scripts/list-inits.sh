@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find . -name '__init__.py' -not -path './.venv/*'
+find src -name '__init__.py'

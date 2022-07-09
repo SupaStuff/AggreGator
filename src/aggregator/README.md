@@ -1,0 +1,3 @@
+# Root package
+
+This is a dummy package to make `poetry build` happy...
