@@ -1,0 +1,56 @@
+version: "3"
+services:
+  aggregator:
+    image: aggregator
+    build:
+      context: .
+      target: final
+    # volumes:
+    #   txn directory
+    #   -
+    networks:
+      - aggregator
+
+  grafana:
+    image: grafana/grafana:8.3.3
+    restart: unless-stopped
+    container_name: grafana
+    volumes:
+      - grafana:/var/lib/grafana
+      # TODO back this up somewhere and figure out what files actually matter instead
+      # - ~/.config/grafana/:/etc/grafana/
+    # environment:
+    #   # Disable login form
+    #   ENV GF_AUTH_DISABLE_LOGIN_FORM: true
+    #   # Allow anonymous authentication
+    #   ENV GF_AUTH_ANONYMOUS_ENABLED: true
+    #   # Role of anonymous user
+    #   ENV GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    #   # Install plugins here or in config file
+    #   ENV GF_INSTALL_PLUGINS: <csv>
+    networks:
+      - aggregator
+    ports:
+      - "3000:3000"
+
+  timescale:
+    image: timescale/timescaledb:2.5.1-pg14
+    container_name: timescale
+    restart: unless-stopped
+    environment:
+      # TODO: use secrets
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - aggregator
+    # ports:
+    #   - 5432:5432
+    volumes:
+      - timescale:/var/lib/postgresql/data
+
+networks:
+  aggregator:
+
+volumes:
+  grafana:
+  timescale:
