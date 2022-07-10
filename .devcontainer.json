@@ -1,6 +1,7 @@
 // https://github.com/devcontainers/spec/blob/main/docs/specs/devcontainerjson-reference.md
 {
   "name": "${localWorkspaceFolderBasename}",
+  // https://github.com/SupaStuff/dockerfiles/blob/main/images/python/Dockerfile#L26-L31
   "image": "supastuff/python:poetry",
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.my_history,target=/home/python/.my_history,type=bind,consistency=cached",
